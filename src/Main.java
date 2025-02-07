@@ -1,6 +1,7 @@
 import java.math.BigDecimal;
 import java.time.LocalDate;
-import java.util.ArrayList;
+import java.util.*;
+import java.util.stream.Collectors;
 
 public class Main {
     public static void main(String[] args) {
@@ -16,10 +17,12 @@ public class Main {
         });
 
         listaFuncionarios.forEach(funcionario -> funcionario.aumentarSalario(10));
+
+        HashMap<String, ArrayList<Funcionario>> funcionariosSeparados = separarFuncionariosPorFuncao(listaFuncionarios);
     }
 
     private static ArrayList<Funcionario> getListaFuncionarios() {
-        ArrayList<Funcionario> lista = new ArrayList<Funcionario>();
+        ArrayList<Funcionario> lista = new ArrayList();
 
         lista.add(new Funcionario("Maria",
                 LocalDate.of(2000, 10, 18),
@@ -82,5 +85,29 @@ public class Main {
         ));
 
         return lista;
+    }
+
+    private static HashMap<String, ArrayList<Funcionario>> separarFuncionariosPorFuncao(ArrayList<Funcionario> lista) {
+        ArrayList<String> funcoes = new ArrayList();
+
+        lista.forEach(funcionario -> {
+            if (!funcoes.contains(funcionario.getFuncao())) {
+                funcoes.add(funcionario.getFuncao());
+            }
+        });
+
+        HashMap<String, ArrayList<Funcionario>> funcionariosSeparados = new HashMap();
+
+        funcoes.forEach(funcao -> {
+            ArrayList<Funcionario> setor = new ArrayList(
+                    lista.stream().filter(funcionario -> {
+                        return funcionario.getFuncao().equals(funcao);
+                    }).collect(Collectors.toList())
+            );
+
+            funcionariosSeparados.put(funcao, setor);
+        });
+
+        return funcionariosSeparados;
     }
 }
