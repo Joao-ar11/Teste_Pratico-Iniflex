@@ -7,6 +7,13 @@ public class Main {
         ArrayList<Funcionario> listaFuncionarios = getListaFuncionarios();
 
         listaFuncionarios.removeIf(funcionario -> funcionario.getNome().equals("João"));
+
+        listaFuncionarios.forEach((funcionario) -> {
+            System.out.println("Nome: " + funcionario.getNome() +
+                    " - Data de Nascimento: " + funcionario.getDataNascimentoFormatada() +
+                    " - Salário: " + funcionario.getSalarioFormatado() +
+                    " - Função: " + funcionario.getFuncao());
+        });
     }
 
     private static ArrayList<Funcionario> getListaFuncionarios() {
