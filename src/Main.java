@@ -14,6 +14,8 @@ public class Main {
                     " - Salário: " + funcionario.getSalarioFormatado() +
                     " - Função: " + funcionario.getFuncao());
         });
+
+        listaFuncionarios.forEach(funcionario -> funcionario.aumentarSalario(10));
     }
 
     private static ArrayList<Funcionario> getListaFuncionarios() {
