@@ -1,5 +1,6 @@
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.time.Period;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -30,6 +31,13 @@ public class Main {
 
         System.out.println("Funcionarios que nasceram em Outubro e Dezembro:");
         funcionariosSeparadosPorMes.forEach(funcionario -> System.out.println("  " + funcionario));
+        System.out.println("----------------------------------------------------------------------------------------");
+
+        Funcionario funcionarioMaisVelho = getFuncionarioMaisVelho(listaFuncionarios);
+        int idadeFuncionario = funcionarioMaisVelho.getIdade();
+
+        System.out.println("Funcionário mais velho:");
+        System.out.println("Nome: " + funcionarioMaisVelho.getNome() + " - idade: " + idadeFuncionario);
     }
 
     private static ArrayList<Funcionario> getListaFuncionarios() {
@@ -96,6 +104,20 @@ public class Main {
         ));
 
         return lista;
+    }
+
+    private static Funcionario getFuncionarioMaisVelho(ArrayList<Funcionario> lista) {
+        Funcionario funcionarioMaisVelho = lista.get(0);
+
+        for (int i = 0; i < lista.size(); i++) {
+            Funcionario funcionario = lista.get(i);
+
+            if (funcionario.getDataNascimento().isBefore(funcionarioMaisVelho.getDataNascimento())) {
+                funcionarioMaisVelho = funcionario;
+            }
+        }
+
+        return funcionarioMaisVelho;
     }
 
     private static HashMap<String, ArrayList<Funcionario>> separarFuncionariosPorFuncao(ArrayList<Funcionario> lista) {
