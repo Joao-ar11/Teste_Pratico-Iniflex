@@ -6,7 +6,7 @@ public class Pessoa {
 
     private String nome;
     private LocalDate dataNascimento;
-    private DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+    private static final DateTimeFormatter FORMATO = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 
     Pessoa(String nome, LocalDate dataNascimento) {
         this.nome = nome;
@@ -26,7 +26,7 @@ public class Pessoa {
     }
 
     public String getDataNascimentoFormatada() {
-        return this.dataNascimento.format(formato);
+        return this.dataNascimento.format(FORMATO);
     }
 
     public int getIdade() {
