@@ -38,4 +38,12 @@ public class Funcionario extends Pessoa {
                 .divide(new BigDecimal(100));
         salario = salario.add(aumento);
     }
+
+    @Override
+    public String toString() {
+        return "Nome: " + String.format("%1$7s", this.getNome()) +
+                " - Data de Nascimento: " + this.getDataNascimentoFormatada() +
+                " - Salário: " + String.format("%1$9s", this.getSalarioFormatado()) +
+                " - Função: " + String.format("%1$13s",  this.getFuncao());
+    }
 }
