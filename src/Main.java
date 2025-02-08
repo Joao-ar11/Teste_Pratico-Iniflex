@@ -114,4 +114,20 @@ public class Main {
 
         return funcionariosSeparados;
     }
+
+    private static ArrayList<Funcionario> separarFuncionariosPorMesDeNascimento(ArrayList<Funcionario> lista, int ...meses) {
+        ArrayList<Funcionario> novaLista = new ArrayList();
+
+        for (int i = 0; i < meses.length; i++) {
+            int mes = meses[i];
+
+            novaLista.addAll(
+                    lista.stream().filter(
+                            funcionario -> funcionario.getDataNascimento().getMonth().getValue() == mes
+                    ).collect(Collectors.toList())
+            );
+        }
+
+        return novaLista;
+    }
 }
