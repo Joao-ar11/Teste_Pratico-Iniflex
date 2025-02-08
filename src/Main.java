@@ -10,19 +10,26 @@ public class Main {
         listaFuncionarios.removeIf(funcionario -> funcionario.getNome().equals("João"));
 
         System.out.println("Lista de funcionários:");
-        listaFuncionarios.forEach((funcionario) -> System.out.println(funcionario));
+        listaFuncionarios.forEach((funcionario) -> System.out.println("  " + funcionario));
 
         System.out.println("----------------------------------------------------------------------------------------");
 
         listaFuncionarios.forEach(funcionario -> funcionario.aumentarSalario(10));
 
-        HashMap<String, ArrayList<Funcionario>> funcionariosSeparados = separarFuncionariosPorFuncao(listaFuncionarios);
+        HashMap<String, ArrayList<Funcionario>> funcionariosSeparadosPorFuncao = separarFuncionariosPorFuncao(listaFuncionarios);
 
-        funcionariosSeparados.forEach((funcao, funcionarios) -> {
-            System.out.println(funcao + ":");
-            funcionarios.forEach(funcionario -> System.out.println("  " + funcionario));
+        System.out.println("Funcionários separados por Função:");
+        funcionariosSeparadosPorFuncao.forEach((funcao, funcionarios) -> {
+            System.out.println("  " + funcao + ":");
+            funcionarios.forEach(funcionario -> System.out.println("    " + funcionario));
             System.out.println();
         });
+        System.out.println("----------------------------------------------------------------------------------------");
+
+        ArrayList<Funcionario> funcionariosSeparadosPorMes = separarFuncionariosPorMesDeNascimento(listaFuncionarios, 10, 12);
+
+        System.out.println("Funcionarios que nasceram em Outubro e Dezembro:");
+        funcionariosSeparadosPorMes.forEach(funcionario -> System.out.println("  " + funcionario));
     }
 
     private static ArrayList<Funcionario> getListaFuncionarios() {
