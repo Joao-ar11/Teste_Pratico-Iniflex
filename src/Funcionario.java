@@ -1,4 +1,5 @@
 import java.math.BigDecimal;
+import java.math.MathContext;
 import java.time.LocalDate;
 import java.util.Locale;
 
@@ -6,6 +7,7 @@ public class Funcionario extends Pessoa {
 
     private BigDecimal salario;
     private String funcao;
+    private static final BigDecimal SALARIO_MINIMO = new BigDecimal(1212.00);
 
     public Funcionario(String nome, LocalDate dataNascimento, BigDecimal salario, String funcao) {
         super(nome, dataNascimento);
@@ -19,6 +21,10 @@ public class Funcionario extends Pessoa {
 
     public String getSalarioFormatado() {
         return String.format(Locale.GERMAN,"%,.2f", this.salario);
+    }
+
+    public BigDecimal calcularSalariosMinimos() {
+        return salario.divide(SALARIO_MINIMO, MathContext.DECIMAL32);
     }
 
     public void setSalario(BigDecimal salario) {
