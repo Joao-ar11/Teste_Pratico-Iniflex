@@ -9,16 +9,20 @@ public class Main {
 
         listaFuncionarios.removeIf(funcionario -> funcionario.getNome().equals("João"));
 
-        listaFuncionarios.forEach((funcionario) -> {
-            System.out.println("Nome: " + funcionario.getNome() +
-                    " - Data de Nascimento: " + funcionario.getDataNascimentoFormatada() +
-                    " - Salário: " + funcionario.getSalarioFormatado() +
-                    " - Função: " + funcionario.getFuncao());
-        });
+        System.out.println("Lista de funcionários:");
+        listaFuncionarios.forEach((funcionario) -> System.out.println(funcionario));
+
+        System.out.println("----------------------------------------------------------------------------------------");
 
         listaFuncionarios.forEach(funcionario -> funcionario.aumentarSalario(10));
 
         HashMap<String, ArrayList<Funcionario>> funcionariosSeparados = separarFuncionariosPorFuncao(listaFuncionarios);
+
+        funcionariosSeparados.forEach((funcao, funcionarios) -> {
+            System.out.println(funcao + ":");
+            funcionarios.forEach(funcionario -> System.out.println("  " + funcionario));
+            System.out.println();
+        });
     }
 
     private static ArrayList<Funcionario> getListaFuncionarios() {
