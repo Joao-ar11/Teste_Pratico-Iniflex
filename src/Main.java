@@ -1,6 +1,5 @@
 import java.math.BigDecimal;
 import java.time.LocalDate;
-import java.time.Period;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -49,6 +48,11 @@ public class Main {
 
         System.out.println("Lista de Funcionários em ordem alfabética: ");
         listaFuncionarios.forEach(funcionario -> System.out.println("  " + funcionario));
+        System.out.println("----------------------------------------------------------------------------------------");
+
+        BigDecimal salarioTotal = somarSalarios(listaFuncionarios);
+
+        System.out.println("Salário total: " + String.format(Locale.GERMAN,"%,.2f", salarioTotal));
     }
 
     private static ArrayList<Funcionario> getListaFuncionarios() {
@@ -169,5 +173,16 @@ public class Main {
         }
 
         return novaLista;
+    }
+
+    private static BigDecimal somarSalarios(ArrayList<Funcionario> lista) {
+        BigDecimal salarioTotal = new BigDecimal(0);
+
+        for (int i = 0; i < lista.size(); i++) {
+            Funcionario funcionario = lista.get(i);
+            salarioTotal = salarioTotal.add(funcionario.getSalario());
+        }
+
+        return salarioTotal;
     }
 }
