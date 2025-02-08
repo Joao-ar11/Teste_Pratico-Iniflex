@@ -49,7 +49,7 @@ public class Funcionario extends Pessoa {
     public String toString() {
         return "Nome: " + String.format("%1$7s", this.getNome()) +
                 " - Data de Nascimento: " + this.getDataNascimentoFormatada() +
-                " - Salário: " + String.format("%1$9s", this.getSalarioFormatado()) +
+                " - Salário: R$ " + String.format("%1$9s", this.getSalarioFormatado()) +
                 " - Função: " + String.format("%1$13s",  this.getFuncao());
     }
 }

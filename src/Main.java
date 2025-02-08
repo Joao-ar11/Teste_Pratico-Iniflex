@@ -36,7 +36,7 @@ public class Main {
         int idadeFuncionario = funcionarioMaisVelho.getIdade();
 
         System.out.println("Funcionário mais velho:");
-        System.out.println("Nome: " + funcionarioMaisVelho.getNome() + " - idade: " + idadeFuncionario);
+        System.out.println("  Nome: " + funcionarioMaisVelho.getNome() + " - idade: " + idadeFuncionario);
         System.out.println("----------------------------------------------------------------------------------------");
 
         listaFuncionarios.sort((o1, o2) -> {
@@ -52,7 +52,7 @@ public class Main {
 
         BigDecimal salarioTotal = somarSalarios(listaFuncionarios);
 
-        System.out.println("Salário total: " + String.format(Locale.GERMAN,"%,.2f", salarioTotal));
+        System.out.println("Salário total: R$ " + String.format(Locale.GERMAN,"%,.2f", salarioTotal));
         System.out.println("----------------------------------------------------------------------------------------");
 
         System.out.println("Quantidade de salários mínimos que cada funcionário ganha:");
