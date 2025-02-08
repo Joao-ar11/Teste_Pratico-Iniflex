@@ -38,6 +38,17 @@ public class Main {
 
         System.out.println("Funcionário mais velho:");
         System.out.println("Nome: " + funcionarioMaisVelho.getNome() + " - idade: " + idadeFuncionario);
+        System.out.println("----------------------------------------------------------------------------------------");
+
+        listaFuncionarios.sort((o1, o2) -> {
+            String nome1 = o1.getNome().toLowerCase();
+            String nome2 = o2.getNome().toLowerCase();
+
+            return nome1.compareTo(nome2);
+        });
+
+        System.out.println("Lista de Funcionários em ordem alfabética: ");
+        listaFuncionarios.forEach(funcionario -> System.out.println("  " + funcionario));
     }
 
     private static ArrayList<Funcionario> getListaFuncionarios() {
