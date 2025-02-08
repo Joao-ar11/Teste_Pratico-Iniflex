@@ -53,6 +53,14 @@ public class Main {
         BigDecimal salarioTotal = somarSalarios(listaFuncionarios);
 
         System.out.println("Salário total: " + String.format(Locale.GERMAN,"%,.2f", salarioTotal));
+        System.out.println("----------------------------------------------------------------------------------------");
+
+        System.out.println("Quantidade de salários mínimos que cada funcionário ganha:");
+        listaFuncionarios.forEach(funcionario -> {
+            System.out.println("  " + String.format("%-7s", funcionario.getNome()) +
+                    ": " + funcionario.calcularSalariosMinimos().toString()
+            );
+        });
     }
 
     private static ArrayList<Funcionario> getListaFuncionarios() {
